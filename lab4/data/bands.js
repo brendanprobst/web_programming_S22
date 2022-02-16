@@ -16,19 +16,16 @@ module.exports = {
 			!yearFormed
 		)
 			throw "must include values for all inputs";
-		if (
-			(typeof name !== "string" || name.trim().length === 0) &&
-			(typeof website !== "string" || website.trim().length() === 0) &&
-			(typeof recordLabel !== "string" || recordLabel.trim().length === 0)
-		)
-			throw "name, website, and record label must be strings";
+		if (typeof name !== "string") throw "name must be a string";
+		if (typeof website !== "string") throw "website must be a string";
+		if (typeof recordLabel !== "string") throw "record label must be a string";
+		if (name.trim().length === 0) throw "Empty parameter.";
+		if (website.trim().length === 0) throw "Empty parameter.";
+		if (recordLabel.trim().length === 0) throw "Empty parameter.";
 
-		if (
-			website.indexOf("https://www.") === -1 &&
-			website.indexOf(".com") === -1 &&
-			website.length < 21
-		)
-			throw "website must contain 'https://www. and .com and must have 5 characters between www. and .com ";
+		if (website.indexOf("https://www.") === -1) throw "invalid website";
+		if (website.indexOf(".com") === -1) throw "invalid website";
+		if (website.length < 21) throw "invalid website";
 
 		if (!genre || !Array.isArray(genre))
 			throw "You must provide an array of genres";
@@ -57,14 +54,14 @@ module.exports = {
 			bandMembers[i] = bandMembers[i].trim();
 		}
 		if (bandMemberInvalid)
-			throw "One or more bandmembers is not a string or is an empty string";
-		// check that year formed is a number and between 1900 and 2022
-		if (
-			typeof yearFormed !== "number" &&
-			yearFormed < 1900 &&
-			yearFormed > 2022
-		)
+			throw "One or more band members is not a string or is an empty string";
+		if (typeof yearFormed !== "number")
 			throw "year formed must be a number between 1900 and 2022";
+		if (yearFormed < 1900)
+			throw "year formed must be a number between 1900 and 2022";
+		if (yearFormed > 2022)
+			throw "year formed must be a number between 1900 and 2022";
+
 		name = name.trim();
 		website = website.trim();
 		recordLabel = recordLabel.trim();
@@ -131,11 +128,6 @@ module.exports = {
 		const bandCollection = await bands();
 		const updatedBand = {
 			name: newName,
-			genre,
-			website,
-			recordLabel,
-			bandMembers,
-			yearFormed,
 		};
 		const updateInfo = await bandCollection.updateOne(
 			{ _id: ObjectId(id) },
