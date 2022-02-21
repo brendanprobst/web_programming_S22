@@ -1,2 +1,4 @@
 const Data = require("./userApi");
-module.exports = Data;
+module.exports = {
+	api: Data,
+};
