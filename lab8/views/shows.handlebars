@@ -1,0 +1,11 @@
+<section>
+	<h1>Shows Results</h1>
+	<ul>
+
+		{{#each shows}}
+			<li class="show">
+				<h2><a href="/show/{{show.id}}">{{show.name}}</a></h2>
+			</li>
+		{{/each}}
+	</ul>
+</section>

@@ -1,0 +1,26 @@
+{
+  "name": "lab 6",
+  "version": "1.0.0",
+  "description": "cs546 lab 6",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendanprobst/web_programming_S22.git"
+  },
+  "author": "Brendan Probst",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendanprobst/web_programming_S22/issues"
+  },
+  "homepage": "https://github.com/brendanprobst/web_programming_S22#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1",
+    "nodemon": "^2.0.15"
+  }
+}
