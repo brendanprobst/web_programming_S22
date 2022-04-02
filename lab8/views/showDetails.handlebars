@@ -1,26 +1,26 @@
-<article class="post">
-	<h1>{{show.name}}</h1>
-	<img alt="{{show.name}}" src="{{show.image.medium}}" />
+<a href="/"><p>Back To Search</p></a>
+
+<article class="show-details">
+	<h1>{{name}}</h1>
+	<img alt="{{picture}}" src="{{picture}}" class="show-picture" />
 	<dl>
 		<dt>Language</dt>
-		<dd>{{show.language}}</dd>
+		<dd>{{language}}</dd>
 		<dt>Genres</dt>
 		<dd>
 			<ul>
-				{{#each show.genres}}
+				{{#each genres}}
 					<li>{{this}}</li>
 				{{/each}}
 			</ul>
 		</dd>
 		<dt>Average Rating</dt>
-		<dd>{{show.rating.averageRating}}</dd>
+		<dd>{{rating}}</dd>
 		<dt>Network</dt>
-		<dd>{{show.network.name}}</dd>
+		<dd>{{network}}</dd>
 		<dt>Summary</dt>
 		<dd>
-			{{show.summary}}
-			{{! TODO: ^^strip html tags }}
+			{{summary}}
 		</dd>
 	</dl>
-
 </article>
