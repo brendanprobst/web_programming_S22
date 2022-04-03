@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Prime</title>
+		<script src="/prime.js"></script>
+	</head>
+	<body>
+		<h1>Enter A Number To Check If It's Prime</h1>
+		<form>
+			<label>
+				Enter Positive Whole Number
+				<input
+					type="text"
+					name="search-key"
+					placeholder="Enter"
+					value=""
+					id="input"
+				/>
+			</label>
+			<button onclick="renderNumber()">Search</button>
+		</form>
+	</body>
+	<h3>Search History</h3>
+	<ul id="history"></ul>
+</html>
