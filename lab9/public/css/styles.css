@@ -1,0 +1,68 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	height: 100vh;
+	width: 100vw;
+	background-color: #222;
+	color: #ddd;
+	font-family: sans-serif;
+}
+body {
+	height: 100%;
+	width: 100%;
+	max-width: 40rem;
+	margin: 0 auto;
+	padding: 2rem;
+}
+h1,
+h3 {
+	font-family: sans-serif;
+}
+form * {
+	display: block;
+}
+form input,
+form button {
+	width: 100%;
+	border: 1px solid #121212;
+	padding: 0.5rem 1rem;
+	margin: 1rem 0;
+	font-size: 1.25rem;
+	border-radius: 0.5rem;
+}
+form input {
+	background-color: #333;
+	color: #fff;
+}
+form button {
+	background-color: #4a7cd9;
+	cursor: pointer;
+}
+#attempts {
+	padding: 1rem;
+	margin: 1rem 0;
+	border-radius: 0.5rem;
+	box-shadow: 0px 3px 4px 3px rgba(0, 0, 0, 0.2);
+}
+li {
+	list-style-type: none;
+	font-weight: 600;
+	font-size: 1.5rem;
+	padding: 0.25rem 0;
+	color: #fff;
+}
+.is-prime {
+	color: #00e676;
+}
+.not-prime {
+	color: #ff3d00;
+}
+footer {
+	background: #444;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+	padding: 1rem 4rem;
+}
