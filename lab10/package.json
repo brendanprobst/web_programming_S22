@@ -1,0 +1,17 @@
+{
+	"name": "lab10",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js"
+	},
+	"author": "Brendan Probst",
+	"license": "ISC",
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"express": "^4.17.3",
+		"express-session": "^1.17.2"
+	}
+}
