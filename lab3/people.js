@@ -68,7 +68,7 @@ async function sameEmail(emailDomain) {
 	let returnArr = [];
 	if (checkEmailIsValid(emailDomain)) {
 		let people = await getPeople();
-		for (person of people) {
+		for (let person of people) {
 			if (person.email.indexOf(emailDomain) !== -1) {
 				returnArr.push(person);
 			}
@@ -187,7 +187,7 @@ async function sameBirthday(month, day) {
 	let array = [];
 	if (checkBirthday(month, day)) {
 		let people = await getPeople();
-		for (person of people) {
+		for (let person of people) {
 			if (checkIfBirthdayIsSame(person.date_of_birth, month, day)) {
 				array.push(`${person.first_name} ${person.last_name}`);
 			}

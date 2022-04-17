@@ -11,6 +11,7 @@ async function main() {
 	}
 	try {
 		let email = await People.sameEmail("harvard.edu");
+		console.log(email);
 	} catch (e) {
 		console.log(e);
 	}
