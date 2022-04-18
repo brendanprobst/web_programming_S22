@@ -20,6 +20,39 @@
 			handleLinkClick(event.target.href);
 		});
 	});
+	//search form
+	$("#search-form-button").on("click", function (event) {
+		event.preventDefault();
+		$("#show-details").empty();
+		$("#show-details").hide();
+
+		value = $("#search-input").val();
+		var requestConfig = {
+			method: "GET",
+			url: `http://api.tvmaze.com/search/shows?q=${value}`,
+		};
+		if (value.trim().length === 0) {
+			alert("Cannot search for nothing");
+			$("#shows-list").show();
+		} else {
+			$("#shows-list").empty();
+			$.ajax(requestConfig).then(function (res) {
+				//render shows in list
+				console.log(res);
+				$("#shows-list").show();
+				for (let show of res) {
+					$("#shows-list").append(
+						`<li><a class="show-link" href='${show.show._links.self.href}'>${show.show.name}</a></li>`
+					);
+				}
+				$("a.show-link").on("click", function (event) {
+					event.preventDefault();
+					handleLinkClick(event.target.href);
+				});
+			});
+		}
+	});
+	//link click
 	function handleLinkClick(link) {
 		let showId = link.substring(link.lastIndexOf("/") + 1, link.length);
 		var requestConfig = {
@@ -31,57 +64,58 @@
 			$("#shows-list").hide();
 			$("#show-details").empty();
 			$("#show-details").show();
-			if (res.name.trim() === "" || res.name === null) {
-				res.name = "N/A";
+			let name,
+				language,
+				network,
+				averageRating,
+				summary = "N/A";
+			let image = "/public/img/not_found.jpeg";
+			if (res.name.trim() !== "" && res.name !== null) {
+				name = res.name;
 			}
-			if (res.image.medium === null) {
-				console.log("image not found");
-				res.image = "/public/img/not_found.jpeg";
+			if (res.summary.trim() !== "" && res.summary !== null) {
+				summary = res.summary;
 			}
-			if (res.language.trim() === 0) {
-				res.language = "N/A";
+			if (res.image !== null) {
+				image = res.image.medium;
 			}
-			if (res.genres.length !== 0) {
+			if (res.language.trim() !== 0 && res.language !== null) {
+				language = res.language;
+			}
+			if (res.genres.length === 0) {
 				res.genres = ["N/A"];
 			}
-			if (!res.rating.average) {
-				res.rating.average = "N/A";
+			if (res.rating.average) {
+				averageRating = res.rating.average;
 			}
-			if (!res.network) {
-				res.network.name = "N/A";
+			if (res.network) {
+				network = res.network.name;
 			}
 
 			$("#show-details").append(/*HTML*/ `<div>
             
-            <h1>${res.name}</h1>
-            <img src="${
-							res.image && res.image.medium
-								? res.image.medium
-								: "/public/img/not_found.jpeg"
-						}" />
+            <h1>${name}</h1>
+            <img src="${image}" />
                         <h2>Language</h2>
-                        <p>${res.language}</p>
+                        <p>${language}</p>
                         <h2>Genres</h2>
                         <ul>
                             ${res.genres.map((genre) => `<li>${genre}</li>`)}
                         </ul>
                         <h2>Average Rating</h2>
                         <p>
-                        ${res.rating.average}
+                        ${averageRating}
                         </p>
                         <h2>Network</h2>
                         <p>
-                        ${res.network.name}
+                        ${network}
                         </p>
                         <h2>Summary</h2>
                         <p>
-                       ${res.summary}
+                       ${summary}
                         </p>
+						<a href="/">Back to home</a>
             </div>`);
 		});
 	}
-	$("#search-form").submit(function (event) {
-		event.preventDefault();
-		console.log($("#search-input".val()));
-	});
 })(window.jQuery);
